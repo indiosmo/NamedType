@@ -281,7 +281,7 @@ struct Comparable : crtp<T, Comparable>
     }
     FLUENT_NODISCARD constexpr bool operator==(Comparable<T> const& other) const
     {
-        return !(*this < other) && !(other < *this);
+        return this->underlying().get() == other.underlying().get();
     }
     FLUENT_NODISCARD constexpr bool operator!=(Comparable<T> const& other) const
     {

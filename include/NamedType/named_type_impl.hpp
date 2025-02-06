@@ -72,6 +72,12 @@ public:
     {
     }
 
+    template <typename... Args>
+    explicit constexpr NamedType(Args&&... args) noexcept(std::is_nothrow_move_constructible<T>::value)
+      : value_(std::forward<Args>(args)...)
+    {
+    }
+
     // get
     FLUENT_NODISCARD constexpr T& get() noexcept
     {
